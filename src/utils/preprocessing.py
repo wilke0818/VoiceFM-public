@@ -36,16 +36,24 @@ def load_and_preprocess(
         1D tensor of shape (samples,) at target_sr
     """
     ext = Path(path).suffix.lower()
-    if ext in (".m4a", ".mp3", ".aac"):
-        # Check for pre-converted wav sibling (from convert_m4a_to_wav.py)
-        wav_sibling = Path(path).with_suffix(".wav")
-        if wav_sibling.exists():
-            waveform, sr = torchaudio.load(str(wav_sibling))
+    try:
+        if ext in (".m4a", ".mp3", ".aac"):
+            # Check for pre-converted wav sibling (from convert_m4a_to_wav.py)
+            wav_sibling = Path(path).with_suffix(".wav")
+            if wav_sibling.exists():
+                waveform, sr = torchaudio.load(str(wav_sibling))
+            else:
+                # Fallback: convert via ffmpeg subprocess (slow)
+                waveform, sr = _load_via_ffmpeg(str(path), target_sr)
         else:
-            # Fallback: convert via ffmpeg subprocess (slow)
-            waveform, sr = _load_via_ffmpeg(str(path), target_sr)
-    else:
-        waveform, sr = torchaudio.load(str(path))
+            waveform, sr = torchaudio.load(str(path))
+    except Exception as exc:
+        # ENV-COMPAT SHIM: torchaudio>=2.9 (torchcodec backend) raises on header-only /
+        # undecodable files that older backends returned as empty. Restore the original
+        # behavior — treat as silence — matching the numel()==0 guard below and
+        # audio_dataset.py's missing-file path. Preserves the cohort size (N=40,056).
+        logger.warning("Failed to decode %s (%s); returning silence", path, exc)
+        return torch.zeros(1)
 
     # Convert to mono
     if waveform.shape[0] > 1:

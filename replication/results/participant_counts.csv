@@ -1,0 +1,15 @@
+label,n_train_846,n_heldout_138
+gsd_control,161,38
+cat_voice,287,46
+cat_neuro,204,23
+cat_mood,83,12
+cat_respiratory,160,31
+gsd_parkinsons,108,3
+gsd_alz_dementia_mci,96,20
+gsd_depression,59,11
+gsd_airway_stenosis,100,14
+gsd_laryngeal_dystonia,79,11
+gsd_mtd,63,9
+gsd_anxiety,22,3
+gsd_benign_lesion,57,9
+gsd_copd_asthma,16,8

@@ -237,7 +237,7 @@ def main():
     logger.info("Recordings: %d, Participants: %d", len(recordings), len(participants))
 
     all_results = {}
-    out_path = RESULTS / "unified_gsd_probes.json"
+    out_path = RESULTS / (f"unified_gsd_probes_seed{args.seeds[0]}.json" if len(args.seeds)==1 else "unified_gsd_probes.json")
 
     def save_incremental():
         """Save after each model so crashes don't lose earlier results."""

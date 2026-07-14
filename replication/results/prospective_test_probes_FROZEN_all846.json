@@ -1,0 +1,44 @@
+{
+  "frozen_whisper/gsd_control": [
+    0.8339473684210525
+  ],
+  "frozen_whisper/cat_voice": [
+    0.944234404536862
+  ],
+  "frozen_whisper/cat_neuro": [
+    0.991304347826087
+  ],
+  "frozen_whisper/cat_mood": [
+    0.6666666666666667
+  ],
+  "frozen_whisper/cat_respiratory": [
+    0.6590292432921314
+  ],
+  "frozen_whisper/gsd_parkinsons": [
+    0.8839506172839506
+  ],
+  "frozen_whisper/gsd_alz_dementia_mci": [
+    0.9978813559322034
+  ],
+  "frozen_whisper/gsd_depression": [
+    0.7487473156764495
+  ],
+  "frozen_whisper/gsd_airway_stenosis": [
+    0.8548387096774194
+  ],
+  "frozen_whisper/gsd_laryngeal_dystonia": [
+    0.9133858267716536
+  ],
+  "frozen_whisper/gsd_mtd": [
+    0.689922480620155
+  ],
+  "frozen_whisper/gsd_anxiety": [
+    0.5703703703703703
+  ],
+  "frozen_whisper/gsd_benign_lesion": [
+    0.8725236864771748
+  ],
+  "frozen_whisper/gsd_copd_asthma": [
+    0.5596153846153846
+  ]
+}

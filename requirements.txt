@@ -25,3 +25,4 @@ pikepdf>=8.0.0
 # Acoustic feature analysis (NeuroVoz / mPower interpretability)
 opensmile>=2.5.0
 praat-parselmouth>=0.4.4
+torchcodec  # required by torchaudio.load; missing upstream
